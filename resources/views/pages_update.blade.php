@@ -20,7 +20,7 @@
 
         <div class="form-group">
             <div class="col-xs-offset-2 col-xs-10">
-                {!! Form::button('Save', ['type'=>'submit']) !!}
+                {!! Form::button('Save', ['class' => 'btn btn-primary','type'=>'submit']) !!}
             </div>
         </div>
 

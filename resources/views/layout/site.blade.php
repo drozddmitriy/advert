@@ -1,94 +1,84 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Clean Blog Template</title>
-    <meta name="keywords" content="clean blog template, html css layout"/>
-    <meta name="description" content="Clean Blog Template is provided by templatemo.com"/>
-    <link href="{{asset('css/front.css')}}" rel="stylesheet" type="text/css"/>
-
-    <!-- JavaScripts-->
-    <script type="text/javascript" src="/js/front.js"></script>
-    {{--<script type="text/javascript" src="js/s3Slider.js"></script>--}}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Document</title>
 </head>
 <body>
-
-<div id="templatemo_wrapper">
-
-    <div id="templatemo_left_column">
-
-        <div id="templatemo_header">
-
-            <div id="site_title">
-                <h1><a href="/" target="_parent">Advert <strong>Site</strong><span>Free HTML-CSS Template</span></a>
-                </h1>
-            </div><!-- end of site_title -->
-
-        </div> <!-- end of header -->
-
-        <div id="templatemo_sidebar">
-
-            <div>
-                @if(Auth::check())
-                    <h2>User name: {{Auth::user()->username}}</h2>
-                    <a href="/logout">Logout</a>
-                    <div>
-                        <div class="button"><a href="/edit">Create Ad</a></div>
-                    </div>
-                @else
-                    <form action="login" method="POST">
-                        {{csrf_field()}}
-                        <p>username: </p>
-                        <p><input type="text" name="username" value="{{old('username')}}"></p>
-
-                        <p>password: </p>
-                        <p><input type="password" name="password"></p>
-
-                        <input type="submit" value="Login">
-                    </form>
-                @endif
-            </div>
-
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Advert Site</h1>
+        <p class="lead">The milk chocolate melts in your mouth, not in your hand.</p>
+        <div class="text-right">
+            <a href="/" class="btn btn-secondary btn-lg">Home</a>
         </div>
 
-    </div> <!-- end of templatemo_left_column -->
-
-    <div id="templatemo_right_column">
-
-        @if (count($errors) > 0)
-            <div class="comment_tab">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        @if (session('status'))
-            <div class="comment_tab">
-                {{ session('status') }}
-            </div>
-        @endif
-
-        @yield('content')
-
-        <div class="cleaner"></div>
     </div>
-    <!-- end of templatemo_main -->
-    <div class="cleaner_h20"></div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            @if(Auth::check())
+                <h2>User name: {{Auth::user()->username}}</h2>
+                <div class="row">
+                    <a href="/logout" class="btn btn-danger">Logout</a>
+                </div>
+                <div class="row my-2">
+                    <a href="/edit" class="btn btn-primary">Create Ad</a>
+                </div>
 
-    <div id="templatemo_footer">
+            @else
+                <form action="login" method="POST">
+                    {{csrf_field()}}
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">username</label>
+                        <input type="text" class="form-control" name="username" value="{{old('username')}}"
+                               placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">password</label>
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
 
-        Copyright © 2048 <a href="#">Your Company Name</a> |
-        <a href="http://www.iwebsitetemplate.com" target="_parent">Website Templates</a> by <a
-                href="http://www.templatemo.com" target="_parent">Free CSS Templates</a>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            @endif
+
+        </div>
+        <div class="col-6">
+
+            @if (count($errors) > 0)
+                <div class="alert alert-danger" role="alert">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if (session('status'))
+                <div class="alert alert-info" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
+
+            @yield('content')
+        </div>
 
     </div>
+</div>
 
-    <div class="cleaner"></div>
-</div> <!-- end of warpper -->
+<footer class="footer mt-auto py-3" style="background-color: #4e555b">
+    <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+    </div>
+</footer>
 
 </body>
 </html>
