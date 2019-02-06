@@ -8,13 +8,17 @@
             <h5 class="card-title"><a href="{{route('page', $advert->id)}}">{{$advert->title}}</a></h5>
             <p class="card-text">{{$advert->description}}</p>
             @if(Auth::check() && Auth::user()->username == $advert->author_name)
-                <div class="row mr-auto">
-                    {!! Form::open(['url'=>route('delete',$advert->id), 'method' => 'POST']) !!}
-                    {!! Form::hidden('_method', 'delete') !!}
-                    {{method_field('DELETE')}}
-                    {!! Form::button('Delete',['class' => 'btn btn-danger','type'=>'submit' ]) !!}
-                    {!! Form::close() !!}
-                    <a href="{{route('edit', $advert->id)}}" class="btn btn-primary">Edit</a>
+                <div class="row">
+                    <div class="pl-md-2 pr-sm-2">
+                        {!! Form::open(['url'=>route('delete',$advert->id), 'method' => 'POST']) !!}
+                        {!! Form::hidden('_method', 'delete') !!}
+                        {{method_field('DELETE')}}
+                        {!! Form::button('Delete',['class' => 'btn btn-danger','type'=>'submit' ]) !!}
+                        {!! Form::close() !!}
+                    </div>
+                    <div>
+                        <a href="{{route('edit', $advert->id)}}" class="btn btn-primary">Edit</a>
+                    </div>
                 </div>
             @endif
         </div>
