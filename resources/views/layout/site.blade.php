@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Advert Site</title>
 </head>
 <body>
 <div class="jumbotron jumbotron-fluid">
@@ -22,16 +22,16 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-3">
+        <div class="col-3 pl-md-1">
             @if(Auth::check())
-                <h2>User name: {{Auth::user()->username}}</h2>
-                <div class="row">
-                    <a href="/logout" class="btn btn-danger">Logout</a>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="text-info">User name: {{Auth::user()->username}}</h5>
+                        <div style="height: 20px"></div>
+                        <a href="/logout" class="btn btn-danger">Logout</a>
+                        <a href="/edit" class="btn btn-primary">Create Ad</a>
+                    </div>
                 </div>
-                <div class="row my-2">
-                    <a href="/edit" class="btn btn-primary">Create Ad</a>
-                </div>
-
             @else
                 <form action="login" method="POST">
                     {{csrf_field()}}
@@ -48,7 +48,6 @@
                     <button type="submit" class="btn btn-primary">Login</button>
                 </form>
             @endif
-
         </div>
         <div class="col-6">
 
@@ -69,6 +68,7 @@
             @endif
 
             @yield('content')
+
         </div>
 
     </div>

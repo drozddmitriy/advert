@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $adverts = Advert::paginate(5);
+        $adverts = Advert::orderBy('id', 'DESC')->paginate(5);
         return view('index')->with('adverts', $adverts);
     }
 }
