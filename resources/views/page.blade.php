@@ -1,7 +1,7 @@
 @extends('layout.site')
 
 @section('content')
-    <div class="col-6">
+
         <div class="card">
             <div class="card-header">
                 <strong>Date: </strong><span>{{$advert->created_at}}</span> | <strong>Author: </strong>
@@ -22,7 +22,7 @@
                 @endif
             </div>
         </div>
-    </div>
-    <div style="height: 200px"></div>
+
+    <div style="height: 20px"></div>
 
 @endsection

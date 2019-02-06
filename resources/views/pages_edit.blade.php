@@ -24,6 +24,7 @@
                 {!! Form::button('Create', ['class' => 'btn btn-primary','type'=>'submit']) !!}
             </div>
         </div>
+        {!! Form::close() !!}
 
     </div>
 @endsection

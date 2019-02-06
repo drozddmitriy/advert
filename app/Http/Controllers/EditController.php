@@ -26,7 +26,7 @@ class EditController extends Controller
             ], $massages);
 
             if ($validator->fails()) {
-                return redirect()->route('edit')->withErrors($validator)->withInput();
+                return redirect()->route('edit', ['advert' => $advert['id']])->withErrors($validator)->withInput();
             }
 
             $advert->fill($input);
