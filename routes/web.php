@@ -19,10 +19,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/delete/{id}', ['uses' => 'EditController@delete', 'as' => 'delete']);
 });
 
-
 Route::post('/login', 'AuthController@login');
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home']);
 Route::get('/{id}', ['uses' => 'HomeController@show', 'as' => 'page']);
-
-
-

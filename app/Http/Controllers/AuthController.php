@@ -11,18 +11,10 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        function myauth($request)
-        {
-            if (Auth::attempt([
-                'username' => $request->get('username'),
-                'password' => $request->get('password')
-            ])) {
-                return true;
-            }
-            return false;
-        }
-
-        if (myauth($request)) {
+        if (Auth::attempt([
+            'username' => $request->get('username'),
+            'password' => $request->get('password')
+        ])) {
             return redirect('/');
         } else {
             $input = $request->except('_token');
@@ -43,7 +35,7 @@ class AuthController extends Controller
 
             $user = User::create($request->all());
             $user->generatePassword($request->get('password'));
-            myauth($request);
+            Auth::login($user, true);
             return redirect('/');
         }
     }
@@ -52,6 +44,5 @@ class AuthController extends Controller
     {
         Auth::logout();
         return redirect('/');
-
     }
 }
