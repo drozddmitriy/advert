@@ -42,4 +42,14 @@ class EditController extends Controller
             return view('pages_update', ['data' => $data]);
         }
     }
+
+    public function delete($id, Request $request){
+
+        $advert = Advert::where('id', $id)->first();
+
+        if ($request->isMethod('delete')) {
+            $advert->delete();
+            return redirect('/')->with('status', 'Advert delete');
+        }
+    }
 }
