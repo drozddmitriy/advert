@@ -21,7 +21,7 @@ class PagesEditController extends Controller
             ];
 
             $validator = Validator::make($input, [
-                'title' => 'required',
+                'title' => 'required|max:100',
                 'description' => 'required',
             ], $massages);
 
